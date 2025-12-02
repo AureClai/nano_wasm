@@ -1,0 +1,23 @@
+[package]
+name = "nano_wasm"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["NanoWasm Contributors"]
+description = "A zero-copy, zero-allocation WebAssembly interpreter for embedded and critical systems"
+repository = "https://github.com/AureClai/nano_wasm"
+keywords = ["wasm", "webassembly", "interpreter", "embedded", "no_std"]
+categories = ["no-std", "embedded"]
+
+[lib]
+name = "nano_wasm"
+path = "src/lib.rs"
+
+[dependencies]
+libm = "0.2"
+
+[features]
+default = []
+# Enable logging support (requires a logger trait implementation)
+logging = []
+
