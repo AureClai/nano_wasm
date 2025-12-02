@@ -28,4 +28,3 @@ pub use interpreter::{NanoInterpreter, MEMORY_SIZE};
 pub type NanoInterpreterDefault<'a> = NanoInterpreter<'a, NoOpLogger>;
 
 mod interpreter;
-
