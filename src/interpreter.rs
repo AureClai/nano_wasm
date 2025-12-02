@@ -9,6 +9,7 @@ use crate::Logger;
 /// Supported WASM Value Types (Internal representation)
 /// We treat everything as u64 storage for simplicity, as requested.
 #[derive(Debug, Clone, Copy, PartialEq)]
+#[allow(dead_code)]
 pub enum Val {
     I32(i32),
     I64(i64),
@@ -54,6 +55,7 @@ struct CallFrame {
     // For now, we'll just support calls that don't need to preserve locals (simple helpers).
     // WAIT: Real WASM calls have their own locals.
     // We need a "Locals Stack" or similar.
+    #[allow(dead_code)]
     locals_base: usize, // Index into a larger locals buffer?
 }
 
@@ -268,6 +270,7 @@ impl<'a, L: Logger> NanoInterpreter<'a, L> {
     }
 
     // Helper: Log formatted debug message
+    #[allow(dead_code)]
     fn log_debug(&self, msg: &str) {
         self.log(msg);
     }
@@ -489,7 +492,7 @@ impl<'a, L: Logger> NanoInterpreter<'a, L> {
             pc += 1;
 
             match opcode {
-                0x02 | 0x03 | 0x04 => {
+                0x02..=0x04 => {
                     // block, loop, if
                     depth += 1;
                     pc += 1; // Skip type
@@ -1321,9 +1324,7 @@ impl<'a, L: Logger> NanoInterpreter<'a, L> {
                     let addr = base + offset_usize;
                     if addr + 8 <= memory_len {
                         let bytes = val.to_le_bytes();
-                        for i in 0..8 {
-                            self.memory[addr + i] = bytes[i];
-                        }
+                        self.memory[addr..addr + 8].copy_from_slice(&bytes);
                     } else {
                         return Err("Memory access out of bounds");
                     }

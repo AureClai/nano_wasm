@@ -1,11 +1,11 @@
 #![no_std]
 
-/// A "Nano" WebAssembly Interpreter
-///
-/// - Zero-Copy: Executes directly from the source buffer.
-/// - Zero-Allocation: Uses fixed-size arrays for stack and locals.
-/// - Streaming: Fetch-Decode-Execute loop (no AST).
-/// - Constraints: Limited stack/locals, supports f64 for Brain logic.
+//! A "Nano" WebAssembly Interpreter
+//!
+//! - Zero-Copy: Executes directly from the source buffer.
+//! - Zero-Allocation: Uses fixed-size arrays for stack and locals.
+//! - Streaming: Fetch-Decode-Execute loop (no AST).
+//! - Constraints: Limited stack/locals, supports f64 for Brain logic.
 
 /// Logger trait for optional logging support
 pub trait Logger {
