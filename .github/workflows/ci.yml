@@ -54,12 +54,18 @@ jobs:
       
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rust-src
       
-      - name: Install cargo-xbuild
-        run: cargo install cargo-xbuild
+      - name: Add target thumbv7em-none-eabihf
+        run: rustup target add thumbv7em-none-eabihf
       
-      - name: Check no_std build
-        run: |
-          cargo build --target thumbv7em-none-eabihf --no-default-features
-          cargo build --target riscv32imac-unknown-none-elf --no-default-features
+      - name: Add target riscv32imac-unknown-none-elf
+        run: rustup target add riscv32imac-unknown-none-elf
+      
+      - name: Check no_std build (ARM)
+        run: cargo build --target thumbv7em-none-eabihf --no-default-features
+      
+      - name: Check no_std build (RISC-V)
+        run: cargo build --target riscv32imac-unknown-none-elf --no-default-features
 

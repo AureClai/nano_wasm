@@ -498,6 +498,19 @@ NanoWasm is designed for the **Capsule Unikernel** project, implementing the "Sp
 
 This separation enables safe, updatable mission logic in critical systems while maintaining the "uncrashable" guarantee of the Spinal Cord.
 
+## 🚀 Performance Optimization
+
+See [OPTIMIZATION.md](OPTIMIZATION.md) for detailed optimization strategies, including:
+
+- Opcode dispatch table optimization
+- Block/loop boundary caching
+- LEB128 decoding fast paths
+- Memory access optimizations
+- Function lookup caching
+- And more...
+
+All optimizations maintain the "Nano" principles: zero-allocation, deterministic memory, and safety.
+
 ## 📚 References
 
 - [WebAssembly Specification](https://webassembly.github.io/spec/)
