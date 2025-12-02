@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2025-12-02
+
+### Fixed
+- CI workflow: Added embedded target installation (`thumbv7em-none-eabihf`, `riscv32imac-unknown-none-elf`)
+- Code formatting: Fixed all `rustfmt` compliance issues
+- Clippy warnings: Resolved all linter warnings including:
+  - Dead code annotations for unused variants and fields
+  - Doc comment formatting (converted to crate-level docs)
+  - Manual memcpy replaced with `copy_from_slice`
+  - OR patterns replaced with range patterns (`0x02..=0x04`)
+- CI compliance: All checks now pass (fmt, clippy, no_std builds)
+
+### Changed
+- Improved code quality and maintainability
+- Enhanced CI/CD pipeline reliability
+
+## [0.1.0] - 2025-12-02
+
 ### Added
 - Initial release of NanoWasm interpreter
 - Zero-copy, zero-allocation execution model
@@ -37,11 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No SIMD support
 - Single-threaded execution only
 
-## [0.1.0] - 2025-12-02
-
-### Added
-- Initial release
-
-[Unreleased]: https://github.com/AureClai/nano_wasm/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/AureClai/nano_wasm/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/AureClai/nano_wasm/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/AureClai/nano_wasm/releases/tag/v0.1.0
 
